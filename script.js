@@ -1,18 +1,11 @@
-// 1. Define your flashcards as an array of objects
-const flashcards = [
-    
-];
+// Flashcard Decks
 // 1. Data Structure
 const flashcardDecks = {
     "HTML": [
-        { question: "What is the powerhouse of the cell?", answer: "Mitochondria" },
-        { question: "What is DNA?", answer: "Deoxyribonucleic acid" },
-        { question: "What process do plants use to make food?", answer: "Photosynthesis" }
     ],
+
     "CSS": [
-        { question: "When did the US declare independence?", answer: "1776" },
-        { question: "Who was the first US president?", answer: "George Washington" },
-        { question: "In what year did World War I begin?", answer: "1914" }
+     
     ],
     "Javascript": [
     { question: "What is a closure?", answer: "A function that retains access to its lexical scope, even when the function is executed outside that scope." },
@@ -29,7 +22,15 @@ const flashcardDecks = {
     { question: "What is the difference between == and === operators in JavaScript?", answer: "The '==' operator compares values for equality after performing type coercion, while the '===' operator compares both value and type without coercion." },
     { question: "What are logical operators in JavaScript?", answer: "Logical operators are used to combine multiple boolean expressions. The main logical operators are AND (&&), OR (||), and NOT (!)." },
 
-    ]
+    ],
+    "React": [
+    ],
+    "Next.js": [
+    ],
+    "TypeScript":[
+    ],
+
+
 };
 
 // 2. State Variables and DOM References
