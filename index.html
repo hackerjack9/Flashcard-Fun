@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Fun</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="title">JavaScript 
+        <br>Flashcards</h1>
+   <div class="flashcard-container">
+    <!-- Navigation Arrow (Left) -->
+    <button class="nav-arrow left-arrow" onclick="changeCard(-1)">&#8249;</button>
+    <!-- Single Flashcard Element -->
+    <div class="card" onclick="flipCard()">
+        <div class="card-inner" id="card-inner">
+            <div class="card-front" id="card-front">
+                <!-- Question will be injected here by JS -->
+            </div>
+            <div class="card-back" id="card-back">
+                <!-- Answer will be injected here by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Arrow (Right) -->
+    <button class="nav-arrow right-arrow" onclick="changeCard(1)">&#8250;</button>
+</div>
+
+<!-- Optional: Status indicator -->
+<p id="card-status">Card 1 of 3</p>
+
+<script src="script.js"></script>
+</body>
+</html>
