@@ -1,36 +1,105 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
     font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
     background: linear-gradient(to right, #74ebd5, #ACB6E5);
 }
 
-.title {
+.app-title {
+    position: absolute;
+    top: 0;
+    margin-top: 30px;
+    font-size: 48px;
+    letter-spacing: 3px;
+    color: transparent;
+    font-weight: bold;
+    text-align: center;
+}
+
+.app-title::after {
+    content: "FLASHCARD FUN";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, green, blue, purple);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Menu Screen --- */
+#menu-screen {
+    text-align: center;
+}
+
+#deck-list button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#deck-list button:hover {
+    background-color: #0056b3;
+}
+
+/* --- Flashcard Screen --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
-    font-size: 24px;
-}   
+}
+
+#menu-btn {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+}
 
 .flashcard-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 400px; /* Adjust width as needed */
 }
 
+.nav-btn {
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* --- The Card Itself --- */
 .card {
-    position: relative;
     width: 300px;
     height: 200px;
-    perspective: 1000px;
+    perspective: 1000px; /* Gives the 3D effect */
     cursor: pointer;
-    flex-grow: 1; /* Allows card to take up available space */
-    margin: 0 10px; /* Space between card and arrows */
-    z-index: 1;
 }
+
 
 .card::after {
     content: "";
@@ -44,6 +113,7 @@ body {
     border-radius: 10px;
 }
 
+
 .card-inner {
     position: relative;
     width: 100%;
@@ -51,47 +121,48 @@ body {
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px;
 }
 
 .card.flipped .card-inner {
     transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
+.card-face {
     position: absolute;
     width: 100%;
     height: 100%;
+    -webkit-backface-visibility: hidden; /* Hide the back side during flip */
     backface-visibility: hidden;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 10px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    box-sizing: border-box; /* Ensures padding is included in width/height */
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 18px;
 }
 
 .card-front {
-    background-color: #f1f1f1;
-    color: black;
+    background-color: #fff;
+    color: #333;
 }
 
 .card-back {
-    background-color: white;
-    color: black;
+    background-color: #007bff;
+    color: white;
     transform: rotateY(180deg);
 }
 
-.nav-arrow {
-    font-size: 30px;
-    padding: 10px 15px;
-    cursor: pointer;
-    background-color: #eee;
-    border: none;
-    border-radius: 50%;
-    outline: none;
+#card-counter {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
 }
 
-.nav-arrow:hover {
-    background-color: #ddd;
+#current-category {
+    display: flex;
+    justify-content: center;
 }

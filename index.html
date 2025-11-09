@@ -7,29 +7,43 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 class="title">JavaScript 
-        <br>Flashcards</h1>
-   <div class="flashcard-container">
-    <!-- Navigation Arrow (Left) -->
-    <button class="nav-arrow left-arrow" onclick="changeCard(-1)">&#8249;</button>
-    <!-- Single Flashcard Element -->
-    <div class="card" onclick="flipCard()">
-        <div class="card-inner" id="card-inner">
-            <div class="card-front" id="card-front">
-                <!-- Question will be injected here by JS -->
-            </div>
-            <div class="card-back" id="card-back">
-                <!-- Answer will be injected here by JS -->
+    <div class="app-title">FLASHCARD FUN</div>
+    <div class="container">
+        <!-- Deck Selection View -->
+        <div id="menu-screen">
+            <h1>Select a Category</h1>
+            <div id="deck-list">
+                <!-- Deck buttons dynamically added by JavaScript -->
             </div>
         </div>
+
+        <!-- Flashcard View -->
+        <div id="flashcard-screen" class="hidden">
+            <div class="header">
+                <button id="menu-btn">← Change Topic</button>
+              
+            </div>
+              <h2 id="current-category"></h2>
+            
+            <div class="flashcard-container">
+                <button id="prev-btn" class="nav-btn">←</button>
+                
+                <div class="card" id="flashcard">
+                    <div class="card-inner">
+                        <div class="card-face card-front" id="card-question">
+                            <!-- Question goes here -->
+                        </div>
+                        <div class="card-face card-back" id="card-answer">
+                            <!-- Answer goes here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="next-btn" class="nav-btn">→</button>
+            </div>
+            <p id="card-counter">Card 1 of 13</p>
+        </div>
     </div>
-
-    <!-- Navigation Arrow (Right) -->
-    <button class="nav-arrow right-arrow" onclick="changeCard(1)">&#8250;</button>
-</div>
-
-<!-- Optional: Status indicator -->
-<p id="card-status">Card 1 of 3</p>
 
 <script src="script.js"></script>
 </body>

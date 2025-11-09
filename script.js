@@ -1,5 +1,20 @@
 // 1. Define your flashcards as an array of objects
 const flashcards = [
+    
+];
+// 1. Data Structure
+const flashcardDecks = {
+    "HTML": [
+        { question: "What is the powerhouse of the cell?", answer: "Mitochondria" },
+        { question: "What is DNA?", answer: "Deoxyribonucleic acid" },
+        { question: "What process do plants use to make food?", answer: "Photosynthesis" }
+    ],
+    "CSS": [
+        { question: "When did the US declare independence?", answer: "1776" },
+        { question: "Who was the first US president?", answer: "George Washington" },
+        { question: "In what year did World War I begin?", answer: "1914" }
+    ],
+    "Javascript": [
     { question: "What is a closure?", answer: "A function that retains access to its lexical scope, even when the function is executed outside that scope." },
     { question: "What is 'this' keyword in JS?", answer: "Refers to the context where the code is executing. Its value depends on how the function is called." },
     { question: "What is a promise?", answer: "An object representing the eventual completion or failure of an asynchronous operation." },
@@ -14,45 +29,89 @@ const flashcards = [
     { question: "What is the difference between == and === operators in JavaScript?", answer: "The '==' operator compares values for equality after performing type coercion, while the '===' operator compares both value and type without coercion." },
     { question: "What are logical operators in JavaScript?", answer: "Logical operators are used to combine multiple boolean expressions. The main logical operators are AND (&&), OR (||), and NOT (!)." },
 
-];
+    ]
+};
 
+// 2. State Variables and DOM References
+let currentDeck = [];
 let currentCardIndex = 0;
-const cardFront = document.getElementById("card-front");
-const cardBack = document.getElementById("card-back");
-const cardElement = document.querySelector(".card");
-const cardStatus = document.getElementById("card-status");
+const menuScreen = document.getElementById('menu-screen');
+const flashcardScreen = document.getElementById('flashcard-screen');
+const deckList = document.getElementById('deck-list');
+const cardQuestion = document.getElementById('card-question');
+const cardAnswer = document.getElementById('card-answer');
+const flashcard = document.getElementById('flashcard');
+const currentCategoryTitle = document.getElementById('current-category');
+const cardCounter = document.getElementById('card-counter');
 
-// Function to update the displayed card content
-function updateCardDisplay() {
-    const currentCardData = flashcards[currentCardIndex];
-    cardFront.innerHTML = `<h3>${currentCardData.question}</h3>`;
-    cardBack.innerHTML = `<p>${currentCardData.answer}</p>`;
-    cardStatus.textContent = `Card ${currentCardIndex + 1} of ${flashcards.length}`;
-    
-    // Ensure the card is showing the front when a new card is loaded
-    if (cardElement.classList.contains("flipped")) {
-        cardElement.classList.remove("flipped");
+// 3. Functions
+function showScreen(screenToShow) {
+    if (screenToShow === 'menu') {
+        menuScreen.classList.remove('hidden');
+        flashcardScreen.classList.add('hidden');
+    } else {
+        menuScreen.classList.add('hidden');
+        flashcardScreen.classList.remove('hidden');
     }
 }
 
-// Function to flip the current card (called by onclick in HTML)
-function flipCard() {
-    cardElement.classList.toggle("flipped");
+function loadDeck(categoryName) {
+    currentDeck = flashcardDecks[categoryName];
+    currentCardIndex = 0;
+    currentCategoryTitle.textContent = categoryName;
+    showScreen('flashcard');
+    renderCard();
 }
 
-// Function to navigate to the next or previous card (called by onclick in HTML)
+function renderCard() {
+    // Reset flip state when changing cards
+    flashcard.classList.remove('flipped'); 
+
+    const currentCard = currentDeck[currentCardIndex];
+    cardQuestion.textContent = currentCard.question;
+    cardAnswer.textContent = currentCard.answer;
+    cardCounter.textContent = `Card ${currentCardIndex + 1} of ${currentDeck.length}`;
+}
+
 function changeCard(direction) {
-    currentCardIndex += direction;
-
-    // Loop back if at the end or beginning
-    if (currentCardIndex >= flashcards.length) {
-        currentCardIndex = 0;
-    } else if (currentCardIndex < 0) {
-        currentCardIndex = flashcards.length - 1;
+    // Ensure card is unflipped before moving to the next one
+    if (flashcard.classList.contains('flipped')) {
+        flashcard.classList.remove('flipped');
+        // A small delay to let the flip animation finish before changing content
+        setTimeout(() => updateCardIndex(direction), 300);
+    } else {
+        updateCardIndex(direction);
     }
-
-    updateCardDisplay();
 }
 
-// Initialize the first card on page load
-updateCardDisplay();
+function updateCardIndex(direction) {
+    if (direction === 'next') {
+        currentCardIndex = (currentCardIndex + 1) % currentDeck.length;
+    } else if (direction === 'prev') {
+        currentCardIndex = (currentCardIndex - 1 + currentDeck.length) % currentDeck.length;
+    }
+    renderCard();
+}
+
+// 4. Event Listeners and Initialization
+
+// Create menu buttons dynamically
+Object.keys(flashcardDecks).forEach(category => {
+    const button = document.createElement('button');
+    button.textContent = category;
+    button.addEventListener('click', () => loadDeck(category));
+    deckList.appendChild(button);
+});
+
+// Navigation buttons
+document.getElementById('next-btn').addEventListener('click', () => changeCard('next'));
+document.getElementById('prev-btn').addEventListener('click', () => changeCard('prev'));
+document.getElementById('menu-btn').addEventListener('click', () => showScreen('menu'));
+
+// Card flip on click
+flashcard.addEventListener('click', () => {
+    flashcard.classList.toggle('flipped');
+});
+
+// Start the app on the menu screen
+showScreen('menu');
