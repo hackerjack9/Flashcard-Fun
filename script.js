@@ -2,9 +2,29 @@
 // 1. Data Structure
 const flashcardDecks = {
     "HTML": [
+         {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
     ],
 
     "CSS": [
+        {question: "Explain the difference between display: none and visibility: hidden", answer: "Display none removes the element completely from the document flow. It takes up no space and is not rendered on the screen. Visibility hidden hides the element visually, but it still occupies its space in the document flow. Other elements will not collapse to fill the hidden element's space."},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
      
     ],
     "Javascript": [
@@ -24,10 +44,40 @@ const flashcardDecks = {
 
     ],
     "React": [
+         {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
     ],
     "Next.js": [
+         {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
     ],
     "TypeScript":[
+         {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
+        {question: " ", answer: " "},
     ],
 
 

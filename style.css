@@ -94,8 +94,8 @@ body {
 
 /* --- The Card Itself --- */
 .card {
-    width: 300px;
-    height: 200px;
+    width: 400px;
+    height: 300px;
     perspective: 1000px; /* Gives the 3D effect */
     cursor: pointer;
 }
@@ -104,8 +104,8 @@ body {
 .card::after {
     content: "";
     background: linear-gradient(rgb(97, 97, 237), aqua, rgb(168, 114, 200), rgb(116, 212, 116), rgb(80, 185, 226));
-    width: 325px;
-    height: 225px;
+    width: 425px;
+    height: 325px;
     position: absolute;
     top: -12px;
     left: -12px;
